@@ -66,6 +66,15 @@ pieslice <- function(a0, a1, r, d, x0, y0, edges, off) {
 
 }
 
+#' Computes the coordinates to plot a circle
+#'
+#' It actually does it by creating a polygon with 100 edges.
+#' @param x0,y0 Numeric scalars. Center of the circle
+#' @param r Numeric scalar. Radius of the circle.
+#' @param rescale Logical scalar. When [TRUE], rescales the polygon
+#' coordinates such that it preservers its aspect ratio once plotted.
+#'
+#' @export
 circle <- function(x0, y0, r, rescale=TRUE) {
   ans <-  pieslice(0, 2*pi, r=r, d=0, x0, y0, edges=100, off=0)
   ans <- ans[-nrow(ans), ]
@@ -315,6 +324,21 @@ piechart <- function(
 }
 
 
+#' Function to create a color key
+#'
+#' @param x0,x1,y0,y1 Numeric scalars. Coordinates of the lower left and
+#' upper right points where the color key will be drawn as proportion of
+#' the plotting region.
+#' @param label.from,label.to Character scalar. Labels of the lower and
+#' upper values of the color key.
+#' @param tick.range,tick.marks Numeric vectors specifying the range and
+#' the tickmarks respectively.
+#' @param cols Character scalar. Colors specifications to create the
+#' color palette.
+#' @param nlevels Integer scalar. Number of levels to extrapolate.
+#' @param main Character scalar. Title of the colorkey.
+#'
+#' @export
 colorkey <- function(
   x0,y0,x1,y1,
   label.from,
