@@ -2,6 +2,8 @@
 
 export(circle)
 export(colorkey)
+export(npolygon)
 export(piechart)
+export(rescale_polygon)
 import(grDevices)
 import(graphics)
