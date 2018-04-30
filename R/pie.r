@@ -341,31 +341,61 @@ piechart <- function(
 #' color palette.
 #' @param nlevels Integer scalar. Number of levels to extrapolate.
 #' @param main Character scalar. Title of the colorkey.
-#'
+#' @param relative Logical scalar. When `TRUE` the color key is drawn relative
+#' to the plotting region area taking `x0, x1, y0, y1` as relative location.
+#' @param tick.args,label.args,main.args Lists of arguments passed to
+#' [graphics::text] for drawing ticks, labels and main respectively.
 #' @export
 colorkey <- function(
   x0,y0,x1,y1,
-  label.from,
-  label.to,
+  cols       = c("white", "steelblue"),
   tick.range = c(0, 1),
-  tick.marks = c(0, .25, .5, .75, 1),
-  cols = c("white", "steelblue"),
-  nlevels = 100,
-  main = NULL
+  tick.marks = seq(tick.range[1], tick.range[2], length.out = 5L),
+  label.from = NULL,
+  label.to   = NULL,
+  nlevels    = 100,
+  main       = NULL,
+  relative   = TRUE,
+  tick.args  = list(),
+  label.args = list(),
+  main.args  = list()
 ) {
+
+  # If relative (the default, will be added to )
+  if (relative) {
+    usr <- graphics::par("usr")
+    xpd <- graphics::par("xpd")
+    on.exit({
+      graphics::plot.window(
+        usr[1:2],
+        usr[3:4],
+        new=FALSE,
+        xpd=xpd,
+        xaxs="i",
+        yaxs="i"
+        )
+    })
+    graphics::plot.window(c(0,1), c(0,1), new=FALSE, xpd=NA)
+
+  }
 
   # Adjusting to textsize
   x0 <- x0 + graphics::strwidth(label.from)
   x1 <- x1 - graphics::strwidth(label.to)
+  y0 <- y0 + max(graphics::strheight(tick.marks))
+  y1 <- y1 - graphics::strheight(main)
 
   # Writing labels
-  graphics::text(
-    x = c(
+  do.call(
+    graphics::text,
+    c(list(
+    x      = c(
       x0 - graphics::strwidth(label.from)/2,
       x1 + graphics::strwidth(label.to)/2
     ),
-    y = rep((y1+y0)/2, 2),
+    y      = rep((y1+y0)/2, 2),
     labels = c(label.from, label.to)
+    ), label.args)
   )
 
   # Readjusting for more space
@@ -384,13 +414,13 @@ colorkey <- function(
 
   # Drawing rectangles
   graphics::symbols(
-    x = xcoords,
-    y = ycoords,
-    inches=FALSE,
-    bg = cols,
-    fg = "transparent",
+    x          = xcoords,
+    y          = ycoords,
+    inches     =FALSE,
+    bg         = cols,
+    fg         = "transparent",
     rectangles = cbind(rep(xsize, n), y1-y0),
-    add=TRUE
+    add        = TRUE
   )
 
   # Bouding box
@@ -410,18 +440,24 @@ colorkey <- function(
     y1 = y0 + (y1 - y0)/5
   )
 
-  graphics::text(
+  do.call(
+    graphics::text,
+    c(
+      list(
     x = tick.pos,
     y = y0 - (y1 - y0)/5 - graphics::strheight(max(tick.marks, na.rm=TRUE))/1.5,
     labels = tick.marks
-  )
+  ), tick.args))
 
   if (length(main))
-    graphics::text(
+    do.call(
+      graphics::text,
+      c(list(
       x = (x1 + x0)/2,
       y = y1,
       pos = 3,
       labels = main
+      ), main.args)
     )
 
 }

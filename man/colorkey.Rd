@@ -4,27 +4,35 @@
 \alias{colorkey}
 \title{Function to create a color key}
 \usage{
-colorkey(x0, y0, x1, y1, label.from, label.to, tick.range = c(0, 1),
-  tick.marks = c(0, 0.25, 0.5, 0.75, 1), cols = c("white", "steelblue"),
-  nlevels = 100, main = NULL)
+colorkey(x0, y0, x1, y1, cols = c("white", "steelblue"), tick.range = c(0,
+  1), tick.marks = seq(tick.range[1], tick.range[2], length.out = 5L),
+  label.from = NULL, label.to = NULL, nlevels = 100, main = NULL,
+  relative = TRUE, tick.args = list(), label.args = list(),
+  main.args = list())
 }
 \arguments{
 \item{x0, x1, y0, y1}{Numeric scalars. Coordinates of the lower left and
 upper right points where the color key will be drawn as proportion of
 the plotting region.}
 
-\item{label.from, label.to}{Character scalar. Labels of the lower and
-upper values of the color key.}
+\item{cols}{Character scalar. Colors specifications to create the
+color palette.}
 
 \item{tick.range, tick.marks}{Numeric vectors specifying the range and
 the tickmarks respectively.}
 
-\item{cols}{Character scalar. Colors specifications to create the
-color palette.}
+\item{label.from, label.to}{Character scalar. Labels of the lower and
+upper values of the color key.}
 
 \item{nlevels}{Integer scalar. Number of levels to extrapolate.}
 
 \item{main}{Character scalar. Title of the colorkey.}
+
+\item{relative}{Logical scalar. When \code{TRUE} the color key is drawn relative
+to the plotting region area taking \code{x0, x1, y0, y1} as relative location.}
+
+\item{tick.args, label.args, main.args}{Lists of arguments passed to
+\link[graphics:text]{graphics::text} for drawing ticks, labels and main respectively.}
 }
 \description{
 Function to create a color key
