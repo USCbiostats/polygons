@@ -1,6 +1,8 @@
 polygons: Flexible functions for computing polygons coordinates in R
 ================
 
+[![Travis build status](https://travis-ci.org/USCBiostats/polygons.svg?branch=master)](https://travis-ci.org/USCBiostats/polygons) [![Build status](https://ci.appveyor.com/api/projects/status/1s03nj397tbkrc56?svg=true)](https://ci.appveyor.com/project/gvegayon/polygons)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 The goal of polygons is to ...
 
@@ -19,7 +21,7 @@ piechart(1:10, density=(1:10)^2/2, slice.off = (1:10)/30, doughnut = .5,
   )
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" width="75%" />
 
 Nice n-sided polygons with the `npolygon` function:
 
@@ -51,3 +53,21 @@ for (n in c(2, 3, 4, 5, 6, 8, 12, 20, 50)) {
 
 par(oldpar)
 ```
+
+Color decayed segments
+
+``` r
+set.seed(2315231)
+n <- 1e4
+x <- cbind(cumsum(rnorm(n, sd=.1)), cumsum(rnorm(n, sd=.05)))
+
+plot(x, type="n", main="A random walk")
+segments_gradient(x, col = colorRamp2(viridis::viridis(2)))
+
+
+# And nice color keys
+colorkey(.5,0,1,.1, cols = viridis::viridis(2), tick.range = c(1, n),
+         main = "Step", tick.args = list(cex=.7))
+```
+
+<img src="man/figures/README-color-segments-1.png" width="75%" />
