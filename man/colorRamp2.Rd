@@ -14,6 +14,9 @@ This implementation of \code{colorRamp} can be 2 or more times faster than the \
 version. It is intended for consecutive calls (i.e. in a loop) to improve
 performance. It is equivalent to the linear interpolation of the function
 \code{colorRamp}.}
+
+\item{thresholds}{A numeric vector of length \code{length(x)}. Optional threshold
+levels so that the mixing can be different that even.}
 }
 \description{
 A faster implementation of \link[grDevices:colorRamp]{grDevices::colorRamp} for linear interpolation.
@@ -45,7 +48,7 @@ rect(
 
 # Another example setting different thresholds
 myf  <- colorRamp2(c("black", "steelblue"))
-myf2 <- colorRamp(c("black", "steelblue"), thresholds=c(0, .7))
+myf2 <- colorRamp2(c("black", "steelblue"), thresholds=c(0, .7))
 
 plot.new()
 plot.window(xlim = c(0,2), ylim = c(1, 11))

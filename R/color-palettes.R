@@ -6,6 +6,8 @@
 #' version. It is intended for consecutive calls (i.e. in a loop) to improve
 #' performance. It is equivalent to the linear interpolation of the function
 #' `colorRamp`.
+#' @param thresholds A numeric vector of length `length(x)`. Optional threshold
+#' levels so that the mixing can be different that even.
 #' @export
 #'
 #' @examples
@@ -35,7 +37,7 @@
 #'
 #' # Another example setting different thresholds
 #' myf  <- colorRamp2(c("black", "steelblue"))
-#' myf2 <- colorRamp(c("black", "steelblue"), thresholds=c(0, .7))
+#' myf2 <- colorRamp2(c("black", "steelblue"), thresholds=c(0, .7))
 #'
 #' plot.new()
 #' plot.window(xlim = c(0,2), ylim = c(1, 11))
