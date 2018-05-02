@@ -1,8 +1,10 @@
 Package: polygons
-Version: 0.0.0.9000
-Title: What the Package Does (one line, title case)
-Description: What the package does (one paragraph).
-Authors@R: person("First", "Last", , "first.last@example.com", c("aut", "cre"))
+Version: 0.1.9000
+Title: Misc functions for calculating and drawing polygons
+Description: Misc set of functions to compute and draw polygons. Among the functions
+  included in this package are: piechart, a more versatile version of pie, colorRamp2,
+  a faster implementation of colorRamp, npolygon, n-sided polygon, and, colorkey.
+Authors@R: person("George", "Vega Yon", , "g.vegayon@gmail.com", c("aut", "cre"))
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

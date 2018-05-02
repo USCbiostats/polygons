@@ -135,19 +135,14 @@ segments_gradient <- function(
   col <- col(0:(n-1)/(n-1))
   col <- rgb(col, alpha=col[,4], maxColorValue = 255)
 
-  # Creating traces
-  idx <- lapply(apply(cbind(1:n, 2:(n+1)), 1, list), unlist)
-  y   <- lapply(idx, function(i) x$y[i])
-  x   <- lapply(idx, function(i) x$x[i])
-
-  invisible(Map(function(.x, .y, .col, .lend, ...) {
-    graphics::segments(
-      x0 = .x[1],
-      x1 = .x[2],
-      y0 = .y[1],
-      y1 = .y[2],
-      col=.col, lend = .lend,...)
-  },
-  .col=col, .x=x, .y=y, .lend = lend,...))
+  graphics::segments(
+    x0 = x$x[1:n],
+    y0 = x$y[1:n],
+    x1 = x$x[2:(n+1)],
+    y1 = x$y[2:(n+1)],
+    col = col,
+    lend = lend,
+    ...
+  )
 
 }
