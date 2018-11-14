@@ -4,10 +4,11 @@
 \alias{piechart}
 \title{A flexible piechart.}
 \usage{
-piechart(x, labels = names(x), radius = 1, doughnut = 0, origin = c(0,
-  0), edges = 200, slice.off = 0, init.angle = 0, last.angle = 360,
-  tick.len = 0.1, text.args = list(), segments.args = list(),
-  skip.plot.slices = FALSE, add = FALSE, rescale = TRUE, ...)
+piechart(x, labels = names(x), radius = 1, doughnut = 0,
+  origin = c(0, 0), edges = 200, slice.off = 0, init.angle = 0,
+  last.angle = 360, tick.len = 0.1, text.args = list(),
+  segments.args = list(), skip.plot.slices = FALSE, add = FALSE,
+  rescale = TRUE, ...)
 }
 \arguments{
 \item{x}{Numeric vector. Values that specify the area of the slices.}

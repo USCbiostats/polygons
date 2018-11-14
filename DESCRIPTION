@@ -4,10 +4,13 @@ Title: Misc functions for calculating and drawing polygons
 Description: Misc set of functions to compute and draw polygons. Among the functions
   included in this package are: piechart, a more versatile version of pie, colorRamp2,
   a faster implementation of colorRamp, npolygon, n-sided polygon, and, colorkey.
-Authors@R: person("George", "Vega Yon", , "g.vegayon@gmail.com", c("aut", "cre"))
+Authors@R: person("George", "Vega Yon", email = "g.vegayon@gmail.com", role = c("aut", "cre"),
+  comment = c(ORCID = "0000-0002-3171-0844"))
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.1
+URL: https://github.com/USCbiostats/polygons
+BugReports: https://github.com/USCbiostats/polygons/issues
