@@ -4,8 +4,13 @@
 \alias{segments_gradient}
 \title{Draw segments colores by gradients}
 \usage{
-segments_gradient(x, y = NULL, col = colorRamp2(c("transparent",
-  "black"), TRUE), lend = 1, ...)
+segments_gradient(
+  x,
+  y = NULL,
+  col = colorRamp2(c("transparent", "black"), TRUE),
+  lend = 1,
+  ...
+)
 }
 \arguments{
 \item{x, y}{Coordinates passed to \link[grDevices:xy.coords]{grDevices::xy.coords}.}

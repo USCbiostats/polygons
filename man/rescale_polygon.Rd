@@ -4,8 +4,7 @@
 \alias{rescale_polygon}
 \title{Function to rescale a polygon such that it keeps the "original" aspec ratio.}
 \usage{
-rescale_polygon(coordinates, yorigin = mean(coordinates[, 2]),
-  adj = NULL)
+rescale_polygon(coordinates, yorigin = mean(coordinates[, 2]), adj = NULL)
 }
 \arguments{
 \item{coordinates}{A two-column matrix or data frame with coordinates (xy).}

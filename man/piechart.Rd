@@ -4,11 +4,24 @@
 \alias{piechart}
 \title{A flexible piechart.}
 \usage{
-piechart(x, labels = names(x), radius = 1, doughnut = 0,
-  origin = c(0, 0), edges = 200, slice.off = 0, init.angle = 0,
-  last.angle = 360, tick.len = 0.1, text.args = list(),
-  segments.args = list(), skip.plot.slices = FALSE, add = FALSE,
-  rescale = TRUE, ...)
+piechart(
+  x,
+  labels = names(x),
+  radius = 1,
+  doughnut = 0,
+  origin = c(0, 0),
+  edges = 200,
+  slice.off = 0,
+  init.angle = 0,
+  last.angle = 360,
+  tick.len = 0.1,
+  text.args = list(),
+  segments.args = list(),
+  skip.plot.slices = FALSE,
+  add = FALSE,
+  rescale = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{Numeric vector. Values that specify the area of the slices.}
@@ -24,7 +37,7 @@ piechart(x, labels = names(x), radius = 1, doughnut = 0,
 
 \item{edges}{Numeric scalar. Smoothness of the slices curve (can be a vector).}
 
-\item{slice.off}{Numeric vector. When \code{!=0}, specifies how much to
+\item{slice.off}{Numeric vector. When \verb{!=0}, specifies how much to
 move the slice away from the origin. When scalar is recycled.}
 
 \item{init.angle}{Numeric scalar. Angle from where to start drawing in degrees.}
